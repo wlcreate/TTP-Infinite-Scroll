@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="heading">TTP Infinite Scroll</h1>
+      <h1 className="heading">🐾 Cat Attack 🐾</h1>
 
       <p className="pin-number">Current number of pins: {pins.length}</p>
 
