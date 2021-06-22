@@ -5,12 +5,27 @@ export default function useInfiniteScroll(data, numPinsToGet) {
   const [numDisplayedResults, setNumDisplayedResults] = useState(0);
   const observer = useRef();
 
+  console.log(pins.length);
+
   useEffect(() => {
     if (numDisplayedResults === 0) {
       const firstPins = data.filter((pin, index) => {
         return index < numPinsToGet;
       });
       setPins(firstPins);
+    } else if (numDisplayedResults >= data.length) {
+      let repeatedPins = [];
+
+      while (repeatedPins.length + data.length < numDisplayedResults) {
+        repeatedPins.push(...data);
+      }
+
+      const numLeftoverPins = numDisplayedResults - repeatedPins.length;
+      const leftoverPins = data.filter((pin, index) => {
+        return index < numLeftoverPins;
+      });
+
+      setPins([...repeatedPins, ...leftoverPins]);
     } else {
       const updatedPins = data.filter((pin, index) => {
         return index < numDisplayedResults;
