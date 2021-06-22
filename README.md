@@ -2,7 +2,7 @@
 
 Cat Attack is [Waverley Leung](https://github.com/wlcreate)'s submission of the TTP Take-Home Coding Challenge for `Challenge #1 - Infinite-Scroll`. The challenge was received on Monday, June 21st with a deadline of Wednesday, June 23rd.
 
-[![Demo gif of Cat Attack's infinite scrolling feature](https://i.gyazo.com/58adf65d25719833933fc9855cdd9bf3.gif)](https://gyazo.com/58adf65d25719833933fc9855cdd9bf3)
+![Demo gif of Cat Attack's infinite scrolling feature](./demo/Cat-Attack.gif)
 
 ## Description
 
