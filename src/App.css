@@ -1,5 +1,8 @@
 .heading {
+  /* color: #004f2d; */
+  color: black;
   text-align: center;
+  font-size: 3.5em;
 }
 
 .grid {
@@ -16,7 +19,7 @@
   padding: 20px;
   padding-bottom: 0px;
   border-radius: 10px;
-  border: 1px solid #eaeaea;
+  background-color: #dff3e4;
 }
 
 .card-image {
