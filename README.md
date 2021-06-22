@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Cat Attack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cat Attack is [Waverley Leung](https://github.com/wlcreate)'s submission of the TTP Take-Home Coding Challenge for `Challenge #1 - Infinite-Scroll`. The challenge was received on Monday, June 21st with a deadline of Wednesday, June 23rd.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Based on the challenge prompt inspired by Pinterest, Cat Attack implements the infinite scroll feature. Through a given (JSON) dataset of Pinterest Pins, users are able to browse the pins and once all pins are viewed, repeats from the beginning the pins as needed. I have executed this by creating a custom hook, `useInfiniteScroll`, to allow for this feature to be easily reused in other pages.
 
-### `yarn start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React](https://reactjs.org)
+- CSS
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `yarn test`
+### Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node Package Manager (`npm`)
+- Node.js
 
-### `yarn build`
+Follow the [instructions here to install Node.js and `npm`](https://nodejs.org/en/). Note that `npm` is distributed with Node.js which means that when you download Node.js, you automatically get `npm` installed on your computer.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Clone down this repo locally with the following command in your terminal: `git clone`
+- `cd` into the directory
+- Install all dependencies: `npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Executing program
 
-### `yarn eject`
+- Run the server:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Solution formulation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`useInfiniteScroll` uses `useEffect`, `useState`, `useRef`, `useCallback`, and the Intersection Observer API to implement the infinite scroll behavior. It implements the behavior by:
 
-## Learn More
+- displaying a certain number of pins
+- attaching a reference to the last pin
+- once that pin is visible (with `isIntersecting`), updates `numDisplayedResults`
+- once `numDisplayedResults` is updated, through `useEffect`, renders more pins
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I decided to have `data` and `numPinsToGet` as arguments in order to make the hook more reusable. If I left `data` within the hook, the hook becomes dependent on that specific data. This is similar to `numPinsToGet`, where if left within the hook, everywhere it is used would need to render the same number of pins at a time. Therefore, by taking them out of the hook the developer can change what data is being used as well as how many to display at a time.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### How to use `useInfiniteScroll`
 
-### Code Splitting
+To use `useInfiniteScroll`, the file with the hook must be imported and then invoked in the page/component for the feature. For the page invoking `useInfiniteScroll`, the `data` and `numPinsToGet` must be passed to it. To display the pins and implement the feature, simply destructure `pins` and `lastPinRef`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+const { pins, lastPinRef } = useInfiniteScroll(data, numPinsToGet);
+```
 
-### Analyzing the Bundle Size
+The `pins` can then be displayed as wished, however please note that in order to execute the next call of pins (the infinite scrolling) `lastPinRef` must be attached to the last rendered pin, which can be accomplished with a check:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+{pins &&
+    pins.map((pin, index) => {
+    if (pins.length === index + 1) {
+        return (
+            <div ref={lastPinRef} key={index}>
+                ...
+            </div>
+        );
+    } else {
+        return (
+            <div key={index}>
+                ...
+            </div>
+        );
+    }
+})}
+```
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+- [Web Dev Simplified's Infinite Scrolling with React](https://www.youtube.com/watch?v=NZKUirTtxcg)
