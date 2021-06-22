@@ -1,11 +1,10 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import data from "./nyc_ttp_pins.json";
 
-export default function useInfiniteScroll() {
-  const observer = useRef();
+export default function useInfiniteScroll(numPinsToGet) {
   const [pins, setPins] = useState([]);
   const [numDisplayedResults, setNumDisplayedResults] = useState(0);
-  const numPinsToGet = 12;
+  const observer = useRef();
 
   useEffect(() => {
     if (numDisplayedResults === 0) {

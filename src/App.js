@@ -2,7 +2,8 @@ import "./App.css";
 import useInfiniteScroll from "./InfiniteScroll/useInfiniteScroll";
 
 function App() {
-  const { pins, lastPinRef } = useInfiniteScroll();
+  const numPinsToGet = 12;
+  const { pins, lastPinRef } = useInfiniteScroll(numPinsToGet);
 
   return (
     <div>
