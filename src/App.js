@@ -1,9 +1,10 @@
 import "./App.css";
+import data from "./InfiniteScroll/nyc_ttp_pins.json";
 import useInfiniteScroll from "./InfiniteScroll/useInfiniteScroll";
 
 function App() {
   const numPinsToGet = 12;
-  const { pins, lastPinRef } = useInfiniteScroll(numPinsToGet);
+  const { pins, lastPinRef } = useInfiniteScroll(data, numPinsToGet);
 
   return (
     <div>

@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import data from "./nyc_ttp_pins.json";
 
-export default function useInfiniteScroll(numPinsToGet) {
+export default function useInfiniteScroll(data, numPinsToGet) {
   const [pins, setPins] = useState([]);
   const [numDisplayedResults, setNumDisplayedResults] = useState(0);
   const observer = useRef();
@@ -19,7 +18,7 @@ export default function useInfiniteScroll(numPinsToGet) {
 
       setPins(updatedPins);
     }
-  }, [numDisplayedResults, numPinsToGet]);
+  }, [numDisplayedResults, data, numPinsToGet]);
 
   // every time a new last pin is created this callback is invoked with a reference to that last pin
   const lastPinRef = useCallback(
