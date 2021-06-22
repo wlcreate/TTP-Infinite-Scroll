@@ -10,6 +10,8 @@ function App() {
     <div>
       <h1 className="heading">TTP Infinite Scroll</h1>
 
+      <p className="pin-number">Current number of pins: {pins.length}</p>
+
       <div className="grid">
         {pins &&
           pins.map((pin, index) => {
@@ -21,7 +23,9 @@ function App() {
                     alt={pin.pin_join.visual_descriptions[0]}
                     className="card-image"
                   />
-                  <p>Pinner: {pin.pinner.username}</p>
+                  <p className="card-pinner">
+                    <span>Pinner</span>: {pin.pinner.username}
+                  </p>
                 </div>
               );
             } else {
@@ -32,7 +36,9 @@ function App() {
                     alt={pin.pin_join.visual_descriptions[0]}
                     className="card-image"
                   />
-                  <p>Pinner: {pin.pinner.username}</p>
+                  <p className="card-pinner">
+                    <span>Pinner</span>: {pin.pinner.username}
+                  </p>
                 </div>
               );
             }

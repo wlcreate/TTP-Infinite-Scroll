@@ -1,8 +1,19 @@
 .heading {
-  /* color: #004f2d; */
   color: black;
   text-align: center;
   font-size: 3.5em;
+
+  margin-top: 80px;
+
+  cursor: default;
+}
+
+.pin-number {
+  color: black;
+  text-align: center;
+  font-size: 1.75em;
+
+  cursor: default;
 }
 
 .grid {
@@ -24,4 +35,15 @@
 
 .card-image {
   max-width: 100%;
+}
+
+.card-pinner {
+  font-size: 1.15em;
+  color: #2c2343;
+
+  cursor: default;
+}
+
+.card-pinner span {
+  font-weight: bold;
 }
