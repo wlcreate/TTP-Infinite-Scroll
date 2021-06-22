@@ -11,7 +11,6 @@ export default function useInfiniteScroll(data, numPinsToGet) {
         return index < numPinsToGet;
       });
       setPins(firstPins);
-      setNumDisplayedResults(firstPins.length);
     } else if (numDisplayedResults >= data.length) {
       let repeatedPins = [];
 
