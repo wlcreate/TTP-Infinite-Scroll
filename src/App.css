@@ -47,3 +47,31 @@
 .card-pinner span {
   font-weight: bold;
 }
+
+/* screen must be no bigger than portrait tablet */
+@media (max-width: 768px) {
+  .grid {
+    margin: 70px 80px;
+  }
+}
+
+/* screen must be no bigger than landscape phone or below */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2.5em;
+
+    margin-top: 70px;
+  }
+
+  .pin-number {
+    font-size: 1.5em;
+  }
+
+  .grid {
+    margin: 50px 40px;
+  }
+
+  .card-pinner {
+    font-size: 1.05em;
+  }
+}
