@@ -1,6 +1,6 @@
 import "./App.css";
-import data from "./InfiniteScroll/nyc_ttp_pins.json";
-import useInfiniteScroll from "./InfiniteScroll/useInfiniteScroll";
+import data from "./data/nyc_ttp_pins.json";
+import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
 function App() {
   const numPinsToGet = 12;
