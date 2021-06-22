@@ -2,6 +2,8 @@
 
 Cat Attack is [Waverley Leung](https://github.com/wlcreate)'s submission of the TTP Take-Home Coding Challenge for `Challenge #1 - Infinite-Scroll`. The challenge was received on Monday, June 21st with a deadline of Wednesday, June 23rd.
 
+[![Demo gif of Cat Attack's infinite scrolling feature](https://i.gyazo.com/58adf65d25719833933fc9855cdd9bf3.gif)](https://gyazo.com/58adf65d25719833933fc9855cdd9bf3)
+
 ## Description
 
 Based on the challenge prompt inspired by Pinterest, Cat Attack implements the infinite scroll feature. Through a given (JSON) dataset of Pinterest Pins, users are able to browse the pins and once all pins are viewed, repeats from the beginning the pins as needed. I have executed this by creating a custom hook, `useInfiniteScroll`, to allow for this feature to be easily reused in other pages.
