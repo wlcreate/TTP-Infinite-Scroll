@@ -8,28 +8,36 @@ function App() {
 
   return (
     <div>
-      <h1>TTP Infinite Scroll</h1>
+      <h1 className="heading">TTP Infinite Scroll</h1>
 
-      {pins &&
-        pins.map((pin, index) => {
-          if (pins.length === index + 1) {
-            return (
-              <div ref={lastPinRef} key={index}>
-                <img src={pin.images["236x"].url} alt="" />
-                <p>{pin.title}</p>
-                <p>Pinner: {pin.pinner.username}</p>
-              </div>
-            );
-          } else {
-            return (
-              <div key={index}>
-                <img src={pin.images["236x"].url} alt="" />
-                <p>{pin.title}</p>
-                <p>Pinner: {pin.pinner.username}</p>
-              </div>
-            );
-          }
-        })}
+      <div className="grid">
+        {pins &&
+          pins.map((pin, index) => {
+            if (pins.length === index + 1) {
+              return (
+                <div ref={lastPinRef} key={index} className="card">
+                  <img
+                    src={pin.images["236x"].url}
+                    alt={pin.pin_join.visual_descriptions[0]}
+                    className="card-image"
+                  />
+                  <p>Pinner: {pin.pinner.username}</p>
+                </div>
+              );
+            } else {
+              return (
+                <div key={index} className="card">
+                  <img
+                    src={pin.images["236x"].url}
+                    alt={pin.pin_join.visual_descriptions[0]}
+                    className="card-image"
+                  />
+                  <p>Pinner: {pin.pinner.username}</p>
+                </div>
+              );
+            }
+          })}
+      </div>
     </div>
   );
 }
