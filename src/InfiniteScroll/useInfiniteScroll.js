@@ -13,6 +13,7 @@ export default function useInfiniteScroll(data, numPinsToGet) {
         return index < numPinsToGet;
       });
       setPins(firstPins);
+      setNumDisplayedResults(firstPins.length);
     } else if (numDisplayedResults >= data.length) {
       let repeatedPins = [];
 
@@ -27,13 +28,13 @@ export default function useInfiniteScroll(data, numPinsToGet) {
 
       setPins([...repeatedPins, ...leftoverPins]);
     } else {
-      const updatedPins = data.filter((pin, index) => {
-        return index < numDisplayedResults;
+      const morePins = data.filter((pin, index) => {
+        return index < numDisplayedResults && index > pins.length - 1;
       });
 
-      setPins(updatedPins);
+      setPins((prevPins) => [...prevPins, ...morePins]);
     }
-  }, [numDisplayedResults, data, numPinsToGet]);
+  }, [numDisplayedResults, pins.length, data, numPinsToGet]);
 
   // every time a new last pin is created this callback is invoked with a reference to that last pin
   const lastPinRef = useCallback(
@@ -44,7 +45,10 @@ export default function useInfiniteScroll(data, numPinsToGet) {
       observer.current = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
-            setNumDisplayedResults(numDisplayedResults + numPinsToGet);
+            setNumDisplayedResults(
+              (prevNumDisplayedResults) =>
+                prevNumDisplayedResults + numPinsToGet
+            );
           }
         },
         { threshold: 1.0 }
