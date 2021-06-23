@@ -2,6 +2,8 @@
 
 Cat Attack is [Waverley Leung](https://github.com/wlcreate)'s submission of the TTP Take-Home Coding Challenge for `Challenge #1 - Infinite-Scroll`. The challenge was received on Monday, June 21st with a deadline of Wednesday, June 23rd and was submitted on Tuesday, June 22nd.
 
+😸 Link to the [deployed site](https://wlcreate.github.io/TTP-Infinite-Scroll/) 😸
+
 ## Description
 
 Based on the challenge prompt inspired by Pinterest, Cat Attack implements the infinite scroll feature. Through a given (JSON) dataset of Pinterest Pins, users are able to browse the pins and once all pins are viewed, repeats from the beginning the pins as needed. I have executed this by creating a custom hook, `useInfiniteScroll`, to allow for this feature to be easily reused in other pages.
@@ -94,3 +96,5 @@ The `pins` can then be displayed as wished, however please note that in order to
 - [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 - [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
 - [Web Dev Simplified's Infinite Scrolling with React](https://www.youtube.com/watch?v=NZKUirTtxcg)
+- [Deploying to GitHub Pages](https://dzone.com/articles/how-to-deploy-react-apps-for-free-with-github-page)
+- [Deploying to GitHub Pages from CRA](https://create-react-app.dev/docs/deployment/#github-pages)
